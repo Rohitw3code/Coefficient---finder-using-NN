@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block title%}
+First neural network
+{% endblock title%}
+
+
+{%block body%}
+
+<div class="container" style="margin-top: 100px; margin-right:100px; margin-left:100px;">
+
+    <div class="input-group">
+
+        <h3>Input The X and Y value for model training</h3>
+        <a href="/new_field/1" type="button" class="btn btn-primary" style="margin:0px 100px">Add</a>
+        <a href="/new_field/0" type="button" class="btn btn-primary" style="margin:0px 100px">remove</a>
+
+    </div>
+<form action="/" method="POST">
+        {% for f in range(no_fields)%}
+        <div class="input-group" style="margin-top:20px">
+            <span class="input-group-text">X and Y</span>
+            <input type="text" name="X1{{f+1}}" aria-label="X1{{f+1}}" placeholder="value of X₁ {{f+1}}"  class="form-control">
+            <input type="text" name="X2{{f+1}}" aria-label="X2{{f+1}}" placeholder="value of X₂ {{f+1}}" class="form-control">
+            <input type="text" name="Y{{f+1}}" aria-label="Y{{f+1}}" placeholder="value of Y  {{f+1}}" class="form-control">
+        </div>
+        {%endfor%}
+
+
+
+    <div class="input-group flex-nowrap" style="margin-top:100px">
+        <span class="input-group-text" id="addon-wrapping">X (predict y for x)</span>
+            <input type="text" name="PX1" aria-label="PX1" placeholder="Predicted value of X₁ "  class="form-control">
+            <input type="text" name="PX2" aria-label="PX2" placeholder="Predicted value of X₂ " class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success" style="margin-top:100px;">Train Model & Predict </button>
+
+    <p class="fw-bold" style="margin-top:50px" >Predicted value of Y : {{f1}} </p>
+    <p class="fw-bold" style="margin-top:10px; margin-bottom:100px;">Predicted Equation(X,Y) : {{f2}}</p>
+
+
+</form>
+
+
+<!--    <button type="submit" class="btn btn-danger" style="margin-top:100px">Predict Y for X</button>-->
+
+</div>
+
+{%endblock body%}
